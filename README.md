@@ -246,3 +246,6 @@ The official API is broken into a given set of entities
  	
 ## Documentation
 The full doxygen documentation for the API can be found [here](http://marvel.mrroa.com/static/docs/class_marvel_1_1_api_1_1_marvel_rest_client.html)
+
+## Attribution
+All Data provided by Marvel. © 2015 Marvel
