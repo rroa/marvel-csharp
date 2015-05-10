@@ -89,6 +89,32 @@ The official API is broken into a given set of entities
                           StoryRequestFilter filter=default(StoryRequestFilter))
     
 ### Comic
+    // Fetches lists of comics with optional filters.
+    FindComics (ComicRequestFilter filter=default(ComicRequestFilter))
+    
+    // This method fetches a single comic resource. 
+    // It is the canonical URI for any comic resource provided by the API.
+    FindComic (string comicId)
+    
+    // Fetches lists of comic creators whose work appears in a specific comic, 
+    // with optional filters.
+    FindComicCreators (string comicId, 
+                       CreatorRequestFilter filter=default(CreatorRequestFilter))
+    
+    // Fetches lists of characters which appear in a specific comic 
+    // with optional filters.
+    FindComicCharacters (string comicId, 
+                         CharacterRequestFilter filter=default(CharacterRequestFilter))
+    
+    // Fetches lists of events in which a specific comic appears, with optional filters.
+    FindComicEvents (string comicId, 
+                     EventRequestFilter filter=default(EventRequestFilter))
+ 	
+ 	// Fetches lists of comic stories in a specific comic issue, 
+ 	// with optional filters.
+ 	FindComicStories (string comicId, 
+ 	                  StoryRequestFilter filter=default(StoryRequestFilter))
+
 ### Event
 ### Creator
 ### Series
