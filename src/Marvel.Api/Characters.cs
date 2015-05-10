@@ -77,7 +77,10 @@ namespace Marvel.Api
         /// <param name="characterId">
         /// Character unique identifier
         /// </param>
-        public virtual EventResult GetCharacterEvents(string characterId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual EventResult GetCharacterEvents(string characterId, EventRequestFilter filter = default(EventRequestFilter))
         {
             // Build request url
             //
@@ -85,6 +88,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/events", CharactersUrlSegment, characterId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseEventFilter(request, filter);
 
             return Execute<EventResult>(request);
         }
@@ -96,7 +103,10 @@ namespace Marvel.Api
         /// <param name="characterId">
         /// Character unique identifier
         /// </param>
-        public virtual SeriesResult GetCharacterSeries(string characterId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual SeriesResult GetCharacterSeries(string characterId, SeriesRequestFilter filter = default(SeriesRequestFilter))
         {
             // Build request url
             //
@@ -104,6 +114,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/series", CharactersUrlSegment, characterId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseSeriesFilter(request, filter);
 
             return Execute<SeriesResult>(request);
         }
@@ -114,7 +128,10 @@ namespace Marvel.Api
         /// <param name="characterId">
         /// Character unique identifier
         /// </param>
-        public virtual StoryResult GetCharacterStories(string characterId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual StoryResult GetCharacterStories(string characterId, StoryRequestFilter filter = default(StoryRequestFilter))
         {
             // Build request url
             //
@@ -122,6 +139,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/stories", CharactersUrlSegment, characterId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseStoryFilter(request, filter);
 
             return Execute<StoryResult>(request);
         }        

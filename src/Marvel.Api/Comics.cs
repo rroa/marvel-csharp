@@ -51,7 +51,10 @@ namespace Marvel.Api
         /// <param name="comicId">
         /// Comic unique identifier
         /// </param>
-        public virtual CreatorResult GetComicCreators(string comicId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual CreatorResult GetComicCreators(string comicId, CreatorRequestFilter filter = default(CreatorRequestFilter))
         {
             // Build request url
             //
@@ -59,6 +62,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/creators", ComicsUrlSegment, comicId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseCreatorFilter(request, filter);
 
             return Execute<CreatorResult>(request);
         }
@@ -95,7 +102,10 @@ namespace Marvel.Api
         /// <param name="comicId">
         /// Comic unique identifier
         /// </param>
-        public virtual EventResult GetComicEvents(string comicId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual EventResult GetComicEvents(string comicId, EventRequestFilter filter = default(EventRequestFilter))
         {
             // Build request url
             //
@@ -103,6 +113,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/events", ComicsUrlSegment, comicId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseEventFilter(request, filter);
 
             return Execute<EventResult>(request);
         }
@@ -113,7 +127,10 @@ namespace Marvel.Api
         /// <param name="comicId">
         /// Comic unique identifier
         /// </param>
-        public virtual StoryResult GetComicStories(string comicId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual StoryResult GetComicStories(string comicId, StoryRequestFilter filter = default(StoryRequestFilter))
         {
             // Build request url
             //
@@ -121,6 +138,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/stories", ComicsUrlSegment, comicId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseStoryFilter(request, filter);
 
             return Execute<StoryResult>(request);
         }

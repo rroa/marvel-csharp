@@ -48,6 +48,12 @@
     <Compile Include="Core.cs" />
     <Compile Include="Creators.cs" />
     <Compile Include="Events.cs" />
+    <Compile Include="Filters\BaseFilter.cs" />
+    <Compile Include="Filters\ComicRequestFilter.cs" />
+    <Compile Include="Filters\CreatorRequestFilter.cs" />
+    <Compile Include="Filters\EventRequestFilter.cs" />
+    <Compile Include="Filters\SeriesRequestFilter.cs" />
+    <Compile Include="Filters\StoryRequestFilter.cs" />
     <Compile Include="Model\DomainObjects\Character.cs" />
     <Compile Include="Model\Lists\CharacterList.cs" />
     <Compile Include="Model\Summaries\CharacterSummary.cs" />

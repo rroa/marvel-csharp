@@ -195,8 +195,87 @@ namespace Marvel.Api
                 if (filter.ResultSetOrder.HasValue()) request.AddParameter("orderBy", filter.ResultSetOrder);
                 if (filter.Limit.HasValue) request.AddParameter("limit", filter.Limit.Value);
                 if (filter.Offset.HasValue) request.AddParameter("offset", filter.Offset.Value);
+            }            
+        }
+
+        private void ParseCreatorFilter(IRestRequest request, CreatorRequestFilter filter)
+        {
+            if (filter != null)
+            {
+                if (filter.FirstName.HasValue()) request.AddParameter("firstName", filter.FirstName);
+                if (filter.MiddleName.HasValue()) request.AddParameter("middleName", filter.MiddleName);
+                if (filter.LastName.HasValue()) request.AddParameter("lastName", filter.LastName);
+                if (filter.Suffix.HasValue()) request.AddParameter("suffix", filter.Suffix);
+                if (filter.NameStartsWith.HasValue()) request.AddParameter("nameStartsWith", filter.NameStartsWith);
+                if (filter.FirstNameStartsWith.HasValue()) request.AddParameter("firstNameStartsWith", filter.FirstNameStartsWith);
+                if (filter.MiddleNameStartsWith.HasValue()) request.AddParameter("middleNameStartsWith", filter.MiddleNameStartsWith);
+                if (filter.LastNameStartsWith.HasValue()) request.AddParameter("lastNameStartsWith", filter.LastNameStartsWith);
+                if (filter.ModifiedSince.HasValue) request.AddParameter("modifiedSince", filter.ModifiedSince.Value.ToString("yyyy-MM-dd"));
+                if (filter.Comics.HasValue()) request.AddParameter("comics", filter.Comics);
+                if (filter.Series.HasValue()) request.AddParameter("series", filter.Series);
+                if (filter.Events.HasValue()) request.AddParameter("events", filter.Events);
+                if (filter.Stories.HasValue()) request.AddParameter("stories", filter.Stories);
+                if (filter.ResultSetOrder.HasValue()) request.AddParameter("orderBy", filter.ResultSetOrder);
+                if (filter.Limit.HasValue) request.AddParameter("limit", filter.Limit.Value);
+                if (filter.Offset.HasValue) request.AddParameter("offset", filter.Offset.Value);
             }
         }
+
+        private void ParseEventFilter(IRestRequest request, EventRequestFilter filter)
+        {
+            if (filter != null)
+            {
+                if (filter.Name.HasValue()) request.AddParameter("name", filter.Name);
+                if (filter.NameStartsWith.HasValue()) request.AddParameter("nameStartsWith", filter.NameStartsWith);
+                if (filter.ModifiedSince.HasValue) request.AddParameter("modifiedSince", filter.ModifiedSince.Value.ToString("yyyy-MM-dd"));
+                if (filter.Creators.HasValue()) request.AddParameter("creators", filter.Creators);
+                if (filter.Characters.HasValue()) request.AddParameter("characters", filter.Characters);
+                if (filter.Series.HasValue()) request.AddParameter("series", filter.Series);
+                if (filter.Comics.HasValue()) request.AddParameter("comics", filter.Comics);
+                if (filter.Stories.HasValue()) request.AddParameter("stories", filter.Stories);
+                if (filter.ResultSetOrder.HasValue()) request.AddParameter("orderBy", filter.ResultSetOrder);
+                if (filter.Limit.HasValue) request.AddParameter("limit", filter.Limit.Value);
+                if (filter.Offset.HasValue) request.AddParameter("offset", filter.Offset.Value);     
+            }
+        }
+
+        private void ParseSeriesFilter(IRestRequest request, SeriesRequestFilter filter)
+        {
+            if (filter != null)
+            {
+                if (filter.Title.HasValue()) request.AddParameter("title", filter.Title);
+                if (filter.TitleStartsWith.HasValue()) request.AddParameter("titleStartsWith", filter.TitleStartsWith);
+                if (filter.StartYear.HasValue) request.AddParameter("startYear", filter.StartYear.Value);
+                if (filter.ModifiedSince.HasValue) request.AddParameter("modifiedSince", filter.ModifiedSince.Value.ToString("yyyy-MM-dd"));
+                if (filter.Comics.HasValue()) request.AddParameter("comics", filter.Comics);
+                if (filter.Stories.HasValue()) request.AddParameter("stories", filter.Stories);                
+                if (filter.Events.HasValue()) request.AddParameter("events", filter.Events);
+                if (filter.Creators.HasValue()) request.AddParameter("creators", filter.Creators);
+                if (filter.Characters.HasValue()) request.AddParameter("characters", filter.Characters);
+                if (filter.SeriesType.HasValue) request.AddParameter("seriesType", filter.SeriesType.HasValue.GetDescription());
+                if (filter.Contains.HasValue()) request.AddParameter("contains", filter.Contains);
+                if (filter.ResultSetOrder.HasValue()) request.AddParameter("orderBy", filter.ResultSetOrder);
+                if (filter.Limit.HasValue) request.AddParameter("limit", filter.Limit.Value);
+                if (filter.Offset.HasValue) request.AddParameter("offset", filter.Offset.Value);
+            }
+        }
+
+        private void ParseStoryFilter(IRestRequest request, StoryRequestFilter filter)
+        {
+            if (filter != null)
+            {
+                if (filter.ModifiedSince.HasValue) request.AddParameter("modifiedSince", filter.ModifiedSince.Value.ToString("yyyy-MM-dd"));
+                if (filter.Comics.HasValue()) request.AddParameter("comics", filter.Comics);
+                if (filter.Series.HasValue()) request.AddParameter("series", filter.Series);
+                if (filter.Events.HasValue()) request.AddParameter("events", filter.Events);
+                if (filter.Creators.HasValue()) request.AddParameter("creators", filter.Creators);
+                if (filter.Characters.HasValue()) request.AddParameter("characters", filter.Characters);                
+                if (filter.ResultSetOrder.HasValue()) request.AddParameter("orderBy", filter.ResultSetOrder);
+                if (filter.Limit.HasValue) request.AddParameter("limit", filter.Limit.Value);
+                if (filter.Offset.HasValue) request.AddParameter("offset", filter.Offset.Value);
+            }
+        }
+
         #endregion
     }
 }

@@ -3,39 +3,25 @@ using System.Collections.Generic;
 
 namespace Marvel.Api.Filters
 {
-    public class StoryRequestFilter : BaseFilter
-    {        
-        private readonly List<int> _characters;
+    public class CreatorRequestFilter : BaseFilter
+    {
+        private readonly List<int> _comics;
         private readonly List<int> _series;
-        private readonly List<int> _comics;                 
-        private readonly List<int> _creators;
         private readonly List<int> _events;
+        private readonly List<int> _stories;
 
-        public StoryRequestFilter()
+        public CreatorRequestFilter()
         {
             _comics = new List<int>();
             _series = new List<int>();
-            _creators = new List<int>();
-            _characters = new List<int>();            
             _events = new List<int>();
+            _stories = new List<int>();
         }
 
         public void AddComic(int id)
         {
             if (!_comics.Contains(id))
                 _comics.Add(id);
-        }
-
-        public void AddCreator(int id)
-        {
-            if (!_creators.Contains(id))
-                _creators.Add(id);
-        }
-
-        public void AddCharacter(int id)
-        {
-            if (!_characters.Contains(id))
-                _characters.Add(id);
         }
 
         public void AddSeries(int id)
@@ -48,9 +34,55 @@ namespace Marvel.Api.Filters
         {
             if (!_events.Contains(id))
                 _events.Add(id);
-        }  
+        }
+
+        public void AddStory(int id)
+        {
+            if (!_stories.Contains(id))
+                _stories.Add(id);
+        }
 
         #region Properties
+        /// <summary>
+        /// Filter by creator first name (e.g. Brian).
+        /// </summary>
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Filter by creator middle name (e.g. Michael).
+        /// </summary>
+        public string MiddleName { get; set; }
+
+        /// <summary>
+        /// Filter by creator last name (e.g. Bendis).
+        /// </summary>
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// Filter by suffix or honorific (e.g. Jr., Sr.).
+        /// </summary>
+        public string Suffix { get; set; }
+
+        /// <summary>
+        /// Filter by creator names that match critera (e.g. B, St L).
+        /// </summary>
+        public string NameStartsWith { get; set; }
+
+        /// <summary>
+        /// Filter by creator first names that match critera (e.g. B, St L).
+        /// </summary>
+        public string FirstNameStartsWith { get; set; }
+
+        /// <summary>
+        /// Filter by creator middle names that match critera (e.g. Mi).
+        /// </summary>
+        public string MiddleNameStartsWith { get; set; }
+
+        /// <summary>
+        /// Filter by creator last names that match critera (e.g. Ben).
+        /// </summary>
+        public string LastNameStartsWith { get; set; }
+
         /// <summary>
         /// Return only characters which have been modified since the specified date.
         /// </summary>
@@ -87,37 +119,7 @@ namespace Marvel.Api.Filters
         }
 
         /// <summary>
-        /// Return only comics which feature work by the specified creators 
-        /// (accepts a comma-separated list of ids).
-        /// </summary>
-        public string Creators
-        {
-            get
-            {
-                if (_creators.Count == 0)
-                    return string.Empty;
-
-                return string.Join(",", _creators.ToArray());
-            }
-        }
-
-        /// <summary>
-        /// Return only comics which feature the specified characters 
-        /// (accepts a comma-separated list of ids).
-        /// </summary>
-        public string Characters
-        {
-            get
-            {
-                if (_characters.Count == 0)
-                    return string.Empty;
-
-                return string.Join(",", _characters.ToArray());
-            }
-        }
-
-        /// <summary>
-        /// Return only stories which take place during the specified events 
+        /// Return only characters which appear in the specified events 
         /// (accepts a comma-separated list of ids).
         /// </summary>
         public string Events
@@ -128,6 +130,21 @@ namespace Marvel.Api.Filters
                     return string.Empty;
 
                 return string.Join(",", _events.ToArray());
+            }
+        }
+
+        /// <summary>
+        /// Return only characters which appear the specified stories 
+        /// (accepts a comma-separated list of ids).
+        /// </summary>
+        public string Stories
+        {
+            get
+            {
+                if (_stories.Count == 0)
+                    return string.Empty;
+
+                return string.Join(",", _stories.ToArray());
             }
         }
         #endregion
