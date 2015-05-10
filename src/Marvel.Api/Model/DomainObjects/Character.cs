@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Marvel.Api.Model.Lists;
 
-namespace Marvel.Api.Model
+namespace Marvel.Api.Model.DomainObjects
 {
     public class Character
     {

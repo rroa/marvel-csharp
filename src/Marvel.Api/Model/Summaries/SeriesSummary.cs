@@ -1,4 +1,4 @@
-﻿namespace Marvel.Api.Model
+﻿namespace Marvel.Api.Model.Summaries
 {
     public class SeriesSummary
     {

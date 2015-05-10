@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Marvel.Api.Model.Lists;
+using Marvel.Api.Model.Summaries;
 
-namespace Marvel.Api.Model
+namespace Marvel.Api.Model.DomainObjects
 {
     public class Comic
     {

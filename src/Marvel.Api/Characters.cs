@@ -5,7 +5,7 @@ namespace Marvel.Api
 {
     public partial class MarvelRestClient
     {
-        private const string CharactersUrlSegment = "v1/public/characters";
+        private const string CharactersUrlSegment = "/public/characters";
 
         /// <summary>
         /// Fetches lists of comic characters with optional filters.
@@ -31,7 +31,7 @@ namespace Marvel.Api
             string requestUrl = 
                 string.Format("{0}/{1}", CharactersUrlSegment, characterId);
 
-            var request = new RestRequest(requestUrl, Method.GET);
+            var request = new RestRequest(requestUrl, Method.GET);            
 
             return Execute<CharacterResult>(request);
         }

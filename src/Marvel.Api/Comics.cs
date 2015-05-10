@@ -5,13 +5,13 @@ namespace Marvel.Api
 {
     public partial class MarvelRestClient
     {
-        private const string ComicsUrlSegment = "v1/public/comics";
+        private const string ComicsUrlSegment = "/public/comics";
 
         /// <summary>
         /// Fetches lists of comics with optional filters.
         /// </summary>        
         public virtual ComicResult GetComics()
-        {
+        {            
             var request = new RestRequest(ComicsUrlSegment, Method.GET);
 
             return Execute<ComicResult>(request);

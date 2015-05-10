@@ -1,6 +1,6 @@
-﻿namespace Marvel.Api.Model
+﻿namespace Marvel.Api.Model.Summaries
 {
-    public class Variant
+    public class ComicSummary
     {
         public string ResourceURI { get; set; }
         public string Name { get; set; }

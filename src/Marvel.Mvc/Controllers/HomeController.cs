@@ -1,6 +1,4 @@
-﻿using System.Text;
-using System.Web.Mvc;
-using Marvel.Api;
+﻿using System.Web.Mvc;
 
 namespace Marvel.Mvc.Controllers
 {
@@ -9,7 +7,7 @@ namespace Marvel.Mvc.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return Content("Hello");
+            return Content("Hello");  
         }
     }
 }

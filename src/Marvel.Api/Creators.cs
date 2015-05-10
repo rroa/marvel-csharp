@@ -5,7 +5,7 @@ namespace Marvel.Api
 {
     public partial class MarvelRestClient
     {
-        private const string CreatorsUrlSegment = "v1/public/creators";
+        private const string CreatorsUrlSegment = "/public/creators";
 
         /// <summary>
         /// Fetches lists of comic creators with optional filters.

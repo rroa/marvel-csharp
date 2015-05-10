@@ -5,7 +5,7 @@ namespace Marvel.Api
 {
     public partial class MarvelRestClient
     {
-        private const string SeriesUrlSegment = "v1/public/series";
+        private const string SeriesUrlSegment = "/public/series";
 
         /// <summary>
         /// Fetches lists of comic series with optional filters.

@@ -5,7 +5,7 @@ namespace Marvel.Api
 {
     public partial class MarvelRestClient
     {
-        private const string EventsUrlSegment = "v1/public/events";
+        private const string EventsUrlSegment = "/public/events";
 
         /// <summary>
         /// Fetches lists of events with optional filters.

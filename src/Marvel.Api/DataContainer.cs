@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Marvel.Api.Model
+namespace Marvel.Api
 {
     public class DataContainer<T> where T : class, new()
     {

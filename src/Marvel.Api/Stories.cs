@@ -5,7 +5,7 @@ namespace Marvel.Api
 {
     public partial class MarvelRestClient
     {
-        private const string StoriesUrlSegment = "v1/public/stories";
+        private const string StoriesUrlSegment = "/public/stories";
 
         /// <summary>
         /// Fetches lists of comic stories with optional filters. 

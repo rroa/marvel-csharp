@@ -13,10 +13,11 @@ namespace Marvel.Api
         protected readonly string ApiPublicKey;
         protected readonly string ApiPrivateKey;
 
-        protected MarvelClient(string apiPublicKey, string apiPrivateKey, string baseUrl)
+        protected MarvelClient(string apiPublicKey, string apiPrivateKey, string apiVersion, string baseUrl)
         {
             // Setting properties
             //
+            ApiVersion = apiVersion;
             BaseUrl = baseUrl;
             DateFormat = "ddd, dd MMM yyyy HH:mm:ss '+0000'";
 
@@ -31,8 +32,9 @@ namespace Marvel.Api
             var assemblyName = new AssemblyName(assembly.FullName);
             var version = assemblyName.Version;
 
-            Client = new RestClient(BaseUrl)
+            Client = new RestClient
             {
+                BaseUrl = new Uri(string.Format("{0}{1}", BaseUrl, ApiVersion)),
                 UserAgent = string.Format("marvel-csharp/{0} (.NET {1})", 
                                            version, 
                                            Environment.Version),
@@ -116,6 +118,11 @@ namespace Marvel.Api
         /// </summary>
         public string BaseUrl { get; private set; }
 
+        /// <summary>
+        /// Marvel API version to use when making requests
+        /// </summary>
+        public string ApiVersion { get; private set; }
+
         protected string DateFormat { get; set; }
         #endregion
     }
@@ -135,7 +142,7 @@ namespace Marvel.Api
         /// API private key
         /// </param>        
         public MarvelRestClient(string apiPublicKey, string apiPrivateKey) :
-            base(apiPublicKey, apiPrivateKey, "http://gateway.marvel.com/")
+            base(apiPublicKey, apiPrivateKey, "v1", "http://gateway.marvel.com/")
         {}
     }
 }

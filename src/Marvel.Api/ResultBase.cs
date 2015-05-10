@@ -1,4 +1,4 @@
-﻿namespace Marvel.Api.Model
+﻿namespace Marvel.Api
 {
     public class ResultBase<T> where T : class, new()
     {
