@@ -115,8 +115,124 @@ The official API is broken into a given set of entities
  	FindComicStories (string comicId, 
  	                  StoryRequestFilter filter=default(StoryRequestFilter))
 
-### Event
 ### Creator
-### Series
-### Story
+    // Fetches lists of comic creators with optional filters.
+    FindCreators (CreatorRequestFilter filter=default(CreatorRequestFilter))
     
+    // This method fetches a single creator resource. 
+    // It is the canonical URI for any creator resource provided by the API.
+    FindCreator (string creatorId)
+    
+    // Fetches lists of comics in which the work of a specific creator appears, 
+    // with optional filters.
+    FindCreatorComics (string creatorId, 
+                       ComicRequestFilter filter=default(ComicRequestFilter))
+ 	
+ 	// Fetches lists of events featuring the work of a specific creator 
+ 	// with optional filters.
+ 	FindCreatorEvents (string creatorId, 
+ 	                   EventRequestFilter filter=default(EventRequestFilter))
+ 	
+ 	// Fetches lists of comic series in which a specific creator's work appears, 
+ 	// with optional filters.
+ 	FindCreatorSeries (string creatorId, 
+ 	                   SeriesRequestFilter filter=default(SeriesRequestFilter))
+ 	
+ 	// Fetches lists of comic stories by a specific creator with optional filters.
+ 	FindCreatorStories (string creatorId, 
+ 	                    StoryRequestFilter filter=default(StoryRequestFilter))
+ 	
+### Event
+    // Fetches lists of events with optional filters.
+    FindEvents (EventRequestFilter filter=default(EventRequestFilter))
+    
+    // This method fetches a single event resource. 
+    // It is the canonical URI for any event resource provided by the API.
+    FindEvent (string eventId)
+ 	
+ 	// Fetches lists of characters which appear in a specific event, 
+ 	// with optional filters.
+ 	FindEventCharacters (string eventId, 
+ 	                     CharacterRequestFilter filter=default(CharacterRequestFilter))
+ 	
+ 	// Fetches lists of comics which take place during a specific event, 
+ 	// with optional filters.
+ 	FindEventComics (string eventId, 
+ 	                 ComicRequestFilter filter=default(ComicRequestFilter))
+ 	
+ 	// Fetches lists of comic creators whose work appears in a specific event, 
+ 	// with optional filters.
+ 	FindEventCreators (string eventId, 
+ 	                   CreatorRequestFilter filter=default(CreatorRequestFilter))
+ 	
+ 	// Fetches lists of comic series in which a specific event takes place, 
+ 	// with optional filters.
+ 	FindEventSeries (string eventId, 
+ 	                 SeriesRequestFilter filter=default(SeriesRequestFilter))
+ 	
+ 	// Fetches lists of comic stories from a specific event, with optional filters.
+ 	FindEventStories (string eventId, 
+ 	                  StoryRequestFilter filter=default(StoryRequestFilter))
+ 	
+### Series
+    // Fetches lists of comic series with optional filters.
+    FindSeries (SeriesRequestFilter filter=default(SeriesRequestFilter))
+ 	
+ 	// This method fetches a single comic series resource. 
+ 	// It is the canonical URI for any comic series resource provided by the API.
+ 	FindSeries (string seriesId)
+ 	
+ 	// Fetches lists of characters which appear in specific series, 
+ 	// with optional filters.
+ 	FindSeriesCharacters (string seriesId, 
+ 	                      CharacterRequestFilter filter=default(CharacterRequestFilter))
+ 	
+ 	// Fetches lists of comics which are published as part of a specific series, with optional filters.
+ 	FindSeriesComics (string seriesId, 
+ 	                  ComicRequestFilter filter=default(ComicRequestFilter))
+ 	
+ 	// Fetches lists of comic creators whose work appears in a specific series, 
+ 	// with optional filters.
+ 	FindSeriesCreators (string seriesId, 
+ 	                    CreatorRequestFilter filter=default(CreatorRequestFilter))
+ 	
+ 	// Fetches lists of events which occur in a specific series, with optional filters.
+ 	FindSeriesEvents (string seriesId, 
+ 	                  EventRequestFilter filter=default(EventRequestFilter))
+ 	
+ 	// Fetches lists of comic stories from a specific series with optional filters.
+ 	FindSeriesStories (string seriesId, 
+ 	                   StoryRequestFilter filter=default(StoryRequestFilter))
+ 	
+### Story
+    // Fetches lists of comic stories with optional filters.
+    FindStories (StoryRequestFilter filter=default(StoryRequestFilter))
+    
+    // This method fetches a single comic story resource. 
+    // It is the canonical URI for any comic story resource provided by the API.
+    FindStory (string storyId)
+ 	
+ 	// Fetches lists of comic characters appearing in a single story, 
+ 	// with optional filters.
+ 	FindStoryCharacters (string storyId, 
+ 	                     CharacterRequestFilter filter=default(CharacterRequestFilter))
+ 	
+ 	// Fetches lists of comics in which a specific story appears, 
+ 	// with optional filters.
+ 	FindStoryComics (string storyId, 
+ 	                 ComicRequestFilter filter=default(ComicRequestFilter))
+ 	
+ 	// Fetches lists of comic creators whose work appears in a specific story, 
+ 	// with optional filters.
+ 	FindStoryCreators (string storyId, 
+ 	                   CreatorRequestFilter filter=default(CreatorRequestFilter))
+ 	
+ 	// Fetches lists of events in which a specific story appears, 
+ 	// with optional filters.
+ 	FindStoryEvents (string storyId, 
+ 	                 EventRequestFilter filter=default(EventRequestFilter))
+ 	
+ 	// Fetches lists of comic series in which the specified story takes place.
+ 	FindStorySeries (string storyId, 
+ 	                 SeriesRequestFilter filter=default(SeriesRequestFilter))
+ 	
