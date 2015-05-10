@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Text;
+using System.Web.Mvc;
+using Marvel.Api;
 
 namespace Marvel.Mvc.Controllers
 {
