@@ -1,4 +1,5 @@
-﻿using Marvel.Api.Results;
+﻿using Marvel.Api.Filters;
+using Marvel.Api.Results;
 using RestSharp;
 
 namespace Marvel.Api
@@ -10,10 +11,16 @@ namespace Marvel.Api
         /// <summary>
         /// Fetches lists of events with optional filters.
         /// </summary>
-        /// <returns></returns>
-        public virtual EventResult GetEvents()
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual EventResult GetEvents(EventRequestFilter filter = default(EventRequestFilter))
         {
             var request = new RestRequest(EventsUrlSegment, Method.GET);
+
+            // Parse filter
+            //
+            ParseEventFilter(request, filter);
 
             return Execute<EventResult>(request);
         }
@@ -43,8 +50,11 @@ namespace Marvel.Api
         /// </summary>
         /// <param name="eventId">
         /// Event unique identifier
-        /// </param>        
-        public virtual CharacterResult GetEventCharacters(string eventId)
+        /// </param>       
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param> 
+        public virtual CharacterResult GetEventCharacters(string eventId, CharacterRequestFilter filter = default(CharacterRequestFilter))
         {
             // Build request url
             //
@@ -52,6 +62,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/characters", EventsUrlSegment, eventId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseCharacterFilter(request, filter);
 
             return Execute<CharacterResult>(request);
         }
@@ -63,7 +77,10 @@ namespace Marvel.Api
         /// <param name="eventId">
         /// Event unique identifier
         /// </param>        
-        public virtual ComicResult GetEventComics(string eventId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual ComicResult GetEventComics(string eventId, ComicRequestFilter filter = default(ComicRequestFilter))
         {
             // Build request url
             //
@@ -71,6 +88,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/comics", EventsUrlSegment, eventId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseComicFilter(request, filter);
 
             return Execute<ComicResult>(request);
         }
@@ -81,8 +102,11 @@ namespace Marvel.Api
         /// </summary>
         /// <param name="eventId">
         /// Event unique identifier
-        /// </param>        
-        public virtual CreatorResult GetEventCreators(string eventId)
+        /// </param>       
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param> 
+        public virtual CreatorResult GetEventCreators(string eventId, CreatorRequestFilter filter = default(CreatorRequestFilter))
         {
             // Build request url
             //
@@ -90,6 +114,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/creators", EventsUrlSegment, eventId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseCreatorFilter(request, filter);
 
             return Execute<CreatorResult>(request);
         }
@@ -100,8 +128,11 @@ namespace Marvel.Api
         /// </summary>
         /// <param name="eventId">
         /// Event unique identifier
-        /// </param>        
-        public virtual SeriesResult GetEventSeries(string eventId)
+        /// </param>    
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>    
+        public virtual SeriesResult GetEventSeries(string eventId, SeriesRequestFilter filter = default(SeriesRequestFilter))
         {
             // Build request url
             //
@@ -109,6 +140,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/series", EventsUrlSegment, eventId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseSeriesFilter(request, filter);
 
             return Execute<SeriesResult>(request);
         }
@@ -119,8 +154,11 @@ namespace Marvel.Api
         /// </summary>
         /// <param name="eventId">
         /// Event unique identifier
-        /// </param>        
-        public virtual StoryResult GetEventStories(string eventId)
+        /// </param>      
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>  
+        public virtual StoryResult GetEventStories(string eventId, StoryRequestFilter filter = default(StoryRequestFilter))
         {
             // Build request url
             //
@@ -128,6 +166,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/stories", EventsUrlSegment, eventId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseStoryFilter(request, filter);
 
             return Execute<StoryResult>(request);
         }

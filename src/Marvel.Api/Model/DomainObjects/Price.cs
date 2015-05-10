@@ -1,8 +1,8 @@
 ﻿namespace Marvel.Api.Model.DomainObjects
 {
-    public class Price
+    public class ComicPrice
     {
         public string Type { get; set; }
-        public string price { get; set; }
+        public string Price { get; set; }
     }
 }

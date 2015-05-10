@@ -1,4 +1,5 @@
-﻿using Marvel.Api.Results;
+﻿using Marvel.Api.Filters;
+using Marvel.Api.Results;
 using RestSharp;
 
 namespace Marvel.Api
@@ -9,10 +10,17 @@ namespace Marvel.Api
 
         /// <summary>
         /// Fetches lists of comic creators with optional filters.
-        /// </summary>        
-        public virtual CreatorResult GetCreators()
+        /// </summary>
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>    
+        public virtual CreatorResult GetCreators(CreatorRequestFilter filter = default(CreatorRequestFilter))
         {
             var request = new RestRequest(CreatorsUrlSegment, Method.GET);
+
+            // Parse filter
+            //
+            ParseCreatorFilter(request, filter);
 
             return Execute<CreatorResult>(request);
         }
@@ -43,7 +51,10 @@ namespace Marvel.Api
         /// <param name="creatorId">
         /// Creator unique identifier
         /// </param> 
-        public virtual ComicResult GetCreatorComics(string creatorId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual ComicResult GetCreatorComics(string creatorId, ComicRequestFilter filter = default(ComicRequestFilter))
         {
             // Build request url
             //
@@ -51,6 +62,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/comics", CreatorsUrlSegment, creatorId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseComicFilter(request, filter);
 
             return Execute<ComicResult>(request);
         }
@@ -61,7 +76,10 @@ namespace Marvel.Api
         /// <param name="creatorId">
         /// Creator unique identifier
         /// </param> 
-        public virtual EventResult GetCreatorEvents(string creatorId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual EventResult GetCreatorEvents(string creatorId, EventRequestFilter filter = default(EventRequestFilter))
         {
             // Build request url
             //
@@ -69,6 +87,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/events", CreatorsUrlSegment, creatorId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseEventFilter(request, filter);
 
             return Execute<EventResult>(request);
         }
@@ -80,7 +102,10 @@ namespace Marvel.Api
         /// <param name="creatorId">
         /// Creator unique identifier
         /// </param> 
-        public virtual SeriesResult GetCreatorSeries(string creatorId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual SeriesResult GetCreatorSeries(string creatorId, SeriesRequestFilter filter = default(SeriesRequestFilter))
         {
             // Build request url
             //
@@ -88,6 +113,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/series", CreatorsUrlSegment, creatorId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseSeriesFilter(request, filter);
 
             return Execute<SeriesResult>(request);
         }
@@ -98,7 +127,10 @@ namespace Marvel.Api
         /// <param name="creatorId">
         /// Creator unique identifier
         /// </param> 
-        public virtual StoryResult GetCreatorStories(string creatorId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual StoryResult GetCreatorStories(string creatorId, StoryRequestFilter filter = default(StoryRequestFilter))
         {
             // Build request url
             //
@@ -106,6 +138,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/stories", CreatorsUrlSegment, creatorId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseStoryFilter(request, filter);
 
             return Execute<StoryResult>(request);
         }

@@ -1,8 +1,8 @@
 ﻿namespace Marvel.Api.Model.DomainObjects
 {
-    public class Date
+    public class MarvelDate
     {
         public string Type { get; set; }
-        public string date { get; set; }
+        public string Date { get; set; }
     }
 }
