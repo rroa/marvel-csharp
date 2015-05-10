@@ -187,7 +187,8 @@ The official API is broken into a given set of entities
  	FindSeriesCharacters (string seriesId, 
  	                      CharacterRequestFilter filter=default(CharacterRequestFilter))
  	
- 	// Fetches lists of comics which are published as part of a specific series, with optional filters.
+ 	// Fetches lists of comics which are published as part of a specific series, 
+ 	// with optional filters.
  	FindSeriesComics (string seriesId, 
  	                  ComicRequestFilter filter=default(ComicRequestFilter))
  	
