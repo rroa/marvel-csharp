@@ -70,19 +70,23 @@ The official API is broken into a given set of entities
     
     // Fetches lists of comics containing a specific character, 
     // with optional filters.
-    FindCharacterComics (string characterId, ComicRequestFilter filter=default(ComicRequestFilter))
+    FindCharacterComics (string characterId, 
+                         ComicRequestFilter filter=default(ComicRequestFilter))
     
     // Fetches lists of events in which a specific character appears, 
     // with optional filters.
-    FindCharacterEvents (string characterId, EventRequestFilter filter=default(EventRequestFilter))
+    FindCharacterEvents (string characterId, 
+                         EventRequestFilter filter=default(EventRequestFilter))
     
     // Fetches lists of comic series in which a specific character appears,
     // with optional filters.
-    FindCharacterSeries (string characterId, SeriesRequestFilter filter=default(SeriesRequestFilter)) 	
+    FindCharacterSeries (string characterId, 
+                         SeriesRequestFilter filter=default(SeriesRequestFilter)) 	
     
     // Fetches lists of comic stories featuring a specific character 
     // with optional filters.
-    FindCharacterStories (string characterId, StoryRequestFilter filter=default(StoryRequestFilter))
+    FindCharacterStories (string characterId, 
+                          StoryRequestFilter filter=default(StoryRequestFilter))
     
 ### Comic
 ### Event
