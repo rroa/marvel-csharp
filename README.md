@@ -9,6 +9,13 @@ Use [NuGet](https://www.nuget.org/) to fetch and install the library for you. Yo
 
     Install-Package Marvel.Api
  
+### Github Clone
+You could also clone the repository:
+
+    git clone https://github.com/rroa/marvel-csharp.git
+    
+Include the project within your solution and add a reference to it.
+
 ### Quick start
 Initialize the API client
 
