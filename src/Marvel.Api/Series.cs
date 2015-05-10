@@ -70,7 +70,10 @@ namespace Marvel.Api
         /// <param name="seriesId">
         /// Series unique identifier
         /// </param>
-        public virtual ComicResult GetSeriesComics(string seriesId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual ComicResult GetSeriesComics(string seriesId, ComicRequestFilter filter = default(ComicRequestFilter))
         {
             // Build request url
             //
@@ -78,6 +81,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/comics", SeriesUrlSegment, seriesId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseComicFilter(request, filter);
 
             return Execute<ComicResult>(request);
         }

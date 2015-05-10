@@ -1,4 +1,5 @@
-﻿using Marvel.Api.Results;
+﻿using Marvel.Api.Filters;
+using Marvel.Api.Results;
 using RestSharp;
 
 namespace Marvel.Api
@@ -43,7 +44,10 @@ namespace Marvel.Api
         /// <param name="creatorId">
         /// Creator unique identifier
         /// </param> 
-        public virtual ComicResult GetCreatorComics(string creatorId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual ComicResult GetCreatorComics(string creatorId, ComicRequestFilter filter = default(ComicRequestFilter))
         {
             // Build request url
             //
@@ -51,6 +55,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/comics", CreatorsUrlSegment, creatorId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseComicFilter(request, filter);
 
             return Execute<ComicResult>(request);
         }

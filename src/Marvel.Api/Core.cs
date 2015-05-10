@@ -163,6 +163,40 @@ namespace Marvel.Api
                 if (filter.Offset.HasValue) request.AddParameter("offset", filter.Offset.Value);                    
             }
         }
+
+        private void ParseComicFilter(IRestRequest request, ComicRequestFilter filter)
+        {
+            if (filter != null)
+            {
+                if (filter.Format.HasValue) request.AddParameter("format", filter.Format.Value.GetDescription());
+                if (filter.FormatType.HasValue) request.AddParameter("formatType", filter.FormatType.Value.GetDescription());
+                if (filter.NoVariants.HasValue) request.AddParameter("noVariants", filter.NoVariants.Value.ToString().ToLower());
+                if (filter.DateDescriptor.HasValue) request.AddParameter("dateDescriptor", filter.DateDescriptor.Value.GetDescription());
+                if (filter.DateRange.HasValue()) request.AddParameter("dateRange", filter.DateRange);
+                if (filter.Title.HasValue()) request.AddParameter("title", filter.Title);
+                if (filter.TitleStartsWith.HasValue()) request.AddParameter("titleStartsWith", filter.TitleStartsWith);
+                if (filter.StartYear.HasValue) request.AddParameter("startYear", filter.StartYear.Value);
+                if (filter.IssueNumber.HasValue) request.AddParameter("issueNumber", filter.IssueNumber.Value);
+                if (filter.DiamondCode.HasValue()) request.AddParameter("diamondCode", filter.DiamondCode);
+                if (filter.DigitalId.HasValue) request.AddParameter("digitalId", filter.DigitalId.Value);
+                if (filter.UPC.HasValue()) request.AddParameter("upc", filter.UPC);
+                if (filter.ISBN.HasValue()) request.AddParameter("isbn", filter.ISBN);
+                if (filter.EAN.HasValue()) request.AddParameter("ean", filter.EAN);
+                if (filter.ISSN.HasValue()) request.AddParameter("issn", filter.ISSN);
+                if (filter.HasDigitalIssue.HasValue) request.AddParameter("hasDigitalIssue", filter.HasDigitalIssue.ToString().ToLower());
+                if (filter.ModifiedSince.HasValue) request.AddParameter("modifiedSince", filter.ModifiedSince.Value.ToString("yyyy-MM-dd"));
+                if (filter.Creators.HasValue()) request.AddParameter("creators", filter.Creators);
+                if (filter.Characters.HasValue()) request.AddParameter("characters", filter.Characters);                
+                if (filter.Series.HasValue()) request.AddParameter("series", filter.Series);
+                if (filter.Events.HasValue()) request.AddParameter("events", filter.Events);
+                if (filter.Stories.HasValue()) request.AddParameter("stories", filter.Stories);
+                if (filter.SharedAppearances.HasValue()) request.AddParameter("sharedAppearances", filter.SharedAppearances);
+                if (filter.Collaborators.HasValue()) request.AddParameter("collaborators", filter.Collaborators);
+                if (filter.ResultSetOrder.HasValue()) request.AddParameter("orderBy", filter.ResultSetOrder);
+                if (filter.Limit.HasValue) request.AddParameter("limit", filter.Limit.Value);
+                if (filter.Offset.HasValue) request.AddParameter("offset", filter.Offset.Value);
+            }
+        }
         #endregion
     }
 }

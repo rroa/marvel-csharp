@@ -5,10 +5,11 @@ namespace Marvel.Api.Model.DomainObjects
 {
     public class Character
     {
+        #region Properties
         /// <summary>
         /// The unique ID of the character resource.
         /// </summary>
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// The name of the character.
@@ -59,5 +60,6 @@ namespace Marvel.Api.Model.DomainObjects
         /// A resource list of series in which this character appears.
         /// </summary>
         public SeriesList Series { get; set; }
+        #endregion
     }  
 }

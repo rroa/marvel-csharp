@@ -10,10 +10,17 @@ namespace Marvel.Api
 
         /// <summary>
         /// Fetches lists of comics with optional filters.
-        /// </summary>        
-        public virtual ComicResult GetComics()
+        /// </summary>      
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>  
+        public virtual ComicResult GetComics(ComicRequestFilter filter = default(ComicRequestFilter))
         {            
             var request = new RestRequest(ComicsUrlSegment, Method.GET);
+
+            // Parse filter
+            //
+            ParseComicFilter(request, filter);
 
             return Execute<ComicResult>(request);
         }

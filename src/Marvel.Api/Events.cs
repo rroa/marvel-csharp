@@ -71,7 +71,10 @@ namespace Marvel.Api
         /// <param name="eventId">
         /// Event unique identifier
         /// </param>        
-        public virtual ComicResult GetEventComics(string eventId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual ComicResult GetEventComics(string eventId, ComicRequestFilter filter = default(ComicRequestFilter))
         {
             // Build request url
             //
@@ -79,6 +82,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/comics", EventsUrlSegment, eventId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseComicFilter(request, filter);
 
             return Execute<ComicResult>(request);
         }
