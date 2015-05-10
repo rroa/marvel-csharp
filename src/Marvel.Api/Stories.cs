@@ -1,4 +1,5 @@
-﻿using Marvel.Api.Results;
+﻿using Marvel.Api.Filters;
+using Marvel.Api.Results;
 using RestSharp;
 
 namespace Marvel.Api
@@ -43,7 +44,10 @@ namespace Marvel.Api
         /// <param name="storyId">
         /// Story unique identifier
         /// </param> 
-        public virtual CharacterResult GetStoryCharacters(string storyId)
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual CharacterResult GetStoryCharacters(string storyId, CharacterRequestFilter filter = default(CharacterRequestFilter))
         {
             // Build request url
             //
@@ -51,6 +55,10 @@ namespace Marvel.Api
                 string.Format("{0}/{1}/characters", StoriesUrlSegment, storyId);
 
             var request = new RestRequest(requestUrl, Method.GET);
+
+            // Parse filter
+            //
+            ParseCharacterFilter(request, filter);
 
             return Execute<CharacterResult>(request);
         }

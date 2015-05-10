@@ -64,6 +64,7 @@
     <Compile Include="Model\DomainObjects\Story.cs" />
     <Compile Include="Model\DomainObjects\TextObject.cs" />
     <Compile Include="Model\DomainObjects\Variant.cs" />
+    <Compile Include="Filters\CharacterRequestFilter.cs" />
     <Compile Include="Results\CharacterResult.cs" />
     <Compile Include="Model\Lists\ComicList.cs" />
     <Compile Include="Model\Summaries\ComicSummary.cs" />

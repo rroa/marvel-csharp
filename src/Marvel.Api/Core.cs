@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 using System.Text;
+using Marvel.Api.Filters;
 using RestSharp;
 using RestSharp.Extensions;
 
@@ -143,6 +144,25 @@ namespace Marvel.Api
         /// </param>        
         public MarvelRestClient(string apiPublicKey, string apiPrivateKey) :
             base(apiPublicKey, apiPrivateKey, "v1", "http://gateway.marvel.com/")
-        {}
+        { }
+
+        #region Helpers
+        private void ParseCharacterFilter(IRestRequest request, CharacterRequestFilter filter)
+        {
+            if (filter != null)
+            {
+                if (filter.Name.HasValue()) request.AddParameter("name", filter.Name);
+                if (filter.NameStartsWith.HasValue()) request.AddParameter("nameStartsWith", filter.NameStartsWith);
+                if (filter.ModifiedSince.HasValue) request.AddParameter("modifiedSince", filter.ModifiedSince.Value.ToString("yyyy-MM-dd"));
+                if (filter.Comics.HasValue()) request.AddParameter("comics", filter.Comics);
+                if (filter.Series.HasValue()) request.AddParameter("series", filter.Series);
+                if (filter.Events.HasValue()) request.AddParameter("events", filter.Events);    
+                if (filter.Stories.HasValue()) request.AddParameter("stories", filter.Stories);                        
+                if (filter.ResultSetOrder.HasValue()) request.AddParameter("orderBy", filter.ResultSetOrder);
+                if (filter.Limit.HasValue) request.AddParameter("limit", filter.Limit.Value);
+                if (filter.Offset.HasValue) request.AddParameter("offset", filter.Offset.Value);                    
+            }
+        }
+        #endregion
     }
 }

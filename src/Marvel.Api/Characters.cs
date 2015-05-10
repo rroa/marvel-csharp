@@ -1,4 +1,5 @@
-﻿using Marvel.Api.Results;
+﻿using Marvel.Api.Filters;
+using Marvel.Api.Results;
 using RestSharp;
 
 namespace Marvel.Api
@@ -9,10 +10,17 @@ namespace Marvel.Api
 
         /// <summary>
         /// Fetches lists of comic characters with optional filters.
-        /// </summary>        
-        public virtual CharacterResult GetCharacters()
+        /// </summary>
+        /// <param name="filter">
+        /// Search query filter data
+        /// </param>
+        public virtual CharacterResult GetCharacters(CharacterRequestFilter filter = default(CharacterRequestFilter))
         {
-            var request = new RestRequest(CharactersUrlSegment, Method.GET);
+            var request = new RestRequest(CharactersUrlSegment, Method.GET);                
+            
+            // Parse filter
+            //
+            ParseCharacterFilter(request, filter);
 
             return Execute<CharacterResult>(request);
         }
@@ -109,6 +117,6 @@ namespace Marvel.Api
             var request = new RestRequest(requestUrl, Method.GET);
 
             return Execute<StoryResult>(request);
-        }
+        }        
     }
 }
