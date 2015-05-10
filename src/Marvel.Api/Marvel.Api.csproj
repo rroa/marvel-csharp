@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.1.0\lib\net451\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,8 +42,56 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Characters.cs" />
+    <Compile Include="Comics.cs" />
+    <Compile Include="Core.Async.cs" />
+    <Compile Include="Core.cs" />
+    <Compile Include="Creators.cs" />
+    <Compile Include="Events.cs" />
+    <Compile Include="Model\DomainObjects\Character.cs" />
+    <Compile Include="Model\Lists\CharacterList.cs" />
+    <Compile Include="Model\Summaries\CharacterSummary.cs" />
+    <Compile Include="Model\DomainObjects\CollectedIssue.cs" />
+    <Compile Include="Model\DomainObjects\Collection.cs" />
+    <Compile Include="Model\DomainObjects\Creator.cs" />
+    <Compile Include="Model\Lists\CreatorList.cs" />
+    <Compile Include="Model\Summaries\CreatorSummary.cs" />
+    <Compile Include="Model\DomainObjects\Date.cs" />
+    <Compile Include="Model\DomainObjects\Event.cs" />
+    <Compile Include="Model\DomainObjects\Image.cs" />
+    <Compile Include="Model\DomainObjects\Price.cs" />
+    <Compile Include="Model\DomainObjects\Series.cs" />
+    <Compile Include="Model\DomainObjects\Story.cs" />
+    <Compile Include="Model\DomainObjects\TextObject.cs" />
+    <Compile Include="Model\DomainObjects\Variant.cs" />
+    <Compile Include="Results\CharacterResult.cs" />
+    <Compile Include="Model\Lists\ComicList.cs" />
+    <Compile Include="Model\Summaries\ComicSummary.cs" />
+    <Compile Include="DataContainer.cs" />
+    <Compile Include="Model\Lists\EventList.cs" />
+    <Compile Include="Model\Summaries\EventSummary.cs" />
+    <Compile Include="Model\DomainObjects\Comic .cs" />
+    <Compile Include="ResultBase.cs" />
+    <Compile Include="Model\Lists\SeriesList.cs" />
+    <Compile Include="Model\Summaries\SeriesSummary.cs" />
+    <Compile Include="Model\Lists\StoryList.cs" />
+    <Compile Include="Model\Summaries\StorySummary.cs" />
+    <Compile Include="Model\DomainObjects\Thumbnail.cs" />
+    <Compile Include="Model\DomainObjects\Url.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\ComicResult.cs" />
+    <Compile Include="Results\CreatorResult.cs" />
+    <Compile Include="Results\EventResult.cs" />
+    <Compile Include="Results\SeriesResult.cs" />
+    <Compile Include="Results\StoryResult.cs" />
+    <Compile Include="Series.cs" />
+    <Compile Include="Stories.cs" />
+    <Compile Include="Util.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
