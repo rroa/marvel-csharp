@@ -10,6 +10,7 @@
 <head>
 
     <link href="~/Assets/prism.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700' rel='stylesheet' type='text/css'>
     <link href="~/Assets/main.css" rel="stylesheet" />
@@ -21,7 +22,13 @@
         <div class="container">
             <div class="row">
                 <div class="col s12">
-                    <h3 class="page-title">@ViewBag.Title</h3>
+                    <h2 class="page-title center">@ViewBag.Title</h2>
+                </div>
+                <div class="col offset-s1 s4">
+                    <a href="#" class="waves-effect waves-light btn-large red block"><i class="fa fa-cog  fa-spin fa-2x"></i>Playground</a>
+                </div>
+                <div class="col offset-s2 s4">
+                    <a href="#" class="waves-effect waves-light btn-large red block"><i class="fa fa-github fa-2x"></i>Github</a>
                 </div>
             </div>
         </div>
@@ -41,7 +48,7 @@
                     Use <a href="https://www.nuget.org/" target="_blank">NuGet</a> to fetch and install the library for you.
                 </p>
                 <p>
-                    PM&gt; Install-Package Marvel.Api
+                    <code>PM&gt; Install-Package Marvel.Api</code>
                 </p>
             </div>
 
