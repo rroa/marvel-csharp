@@ -83,6 +83,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\materialize.min.css" />
+    <Content Include="Assets\materialize.min.js" />
+    <Content Include="Assets\prism.css" />
+    <Content Include="Assets\prism.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -99,6 +103,7 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\marvel-roa - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\marvel-roa - Web Deploy.pubxml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -109,7 +114,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Marvel.Api\Marvel.Api.csproj">

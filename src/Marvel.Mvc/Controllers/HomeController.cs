@@ -7,7 +7,7 @@ namespace Marvel.Mvc.Controllers
         // GET: Home
         public ActionResult Index()
         {            
-            return Content("Hello");
+            return View();
         }
     }
 }

@@ -1,0 +1,19 @@
+﻿.header {
+    background-color: black;
+}
+
+footer {
+    background-color:#f0f0f0;
+    padding-bottom:20px;
+}
+
+footer p {
+    color: #808080;
+}
+
+footer .row {
+    margin-bottom:0px;
+}
+.page-title {
+    color:#f3f3f3;
+}
