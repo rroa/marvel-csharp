@@ -8,7 +8,6 @@
 
 <html>
 <head>
-
     <link href="~/Assets/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
@@ -25,7 +24,7 @@
                     <h2 class="page-title center">@ViewBag.Title</h2>
                 </div>
                 <div class="col offset-s1 s4">
-                    <a href="#" class="waves-effect waves-light btn-large red block"><i class="fa fa-cog  fa-spin fa-2x"></i>Playground</a>
+                    <a id="playground" href="#" class="waves-effect waves-light btn-large red block"><i class="fa fa-cog  fa-spin fa-2x"></i>Playground</a>
                 </div>
                 <div class="col offset-s2 s4">
                     <a href="#" class="waves-effect waves-light btn-large red block"><i class="fa fa-github fa-2x"></i>Github</a>
@@ -47,9 +46,11 @@
                 <p>
                     Use <a href="https://www.nuget.org/" target="_blank">NuGet</a> to fetch and install the library for you.
                 </p>
-                <p>
-                    <code>PM&gt; Install-Package Marvel.Api</code>
-                </p>
+                <pre>
+                <code class="language-csharp">                        
+    PM&gt; Install-Package Marvel.Api
+                    </code>
+                </pre>
             </div>
 
             <div class="col s12">
@@ -74,29 +75,132 @@
     } 
                         </code>
                 </pre>
-                <p><i>For more on how to use this wrapper visit our <a href="https://github.com/rroa/marvel-csharp/wiki" target="_blank">wiki</a></i></p>
+                <p><i>For more on how to use this wrapper visit <a href="https://github.com/rroa/marvel-csharp" target="_blank">marvel-csharp</a></i> @@ Github.</p>
             </div>
             <div class="col s12">
                 <h4>Documentation</h4>
                 <div class="divider"></div>
                 <p>The full doxygen documentation for the API can be found <a href="http://marvel.mrroa.com/static/docs/class_marvel_1_1_api_1_1_marvel_rest_client.html" target="_blank">here</a></p>
-            </div>            
+            </div>
         </div>
     </div>
-
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col s12">
                     <p class="center"><i>MIT License 2015</i></p>
-
                 </div>
             </div>
         </div>
-
     </footer>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>Marvel Search</h4>
+            <p>
+                Who you gonna call?!!
+            </p>
+            <div id="heroes">
+                <form id="search-heroe" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="name" type="text" class="validate">
+                            <label for="name">Name</label>
+                            <span id="error" style="display:none; color: red">You must provide a name.</span>
+                        </div>
+                    </div>
+                    <p>
+                        <input value="character" name="group1" type="radio" id="test1" checked />
+                        <label for="test1">Character</label>
+                    </p>
+                    <p>
+                        <input disabled="disabled" value="comic" name="group1" type="radio" id="test2" />
+                        <label for="test2">Comic</label>
+                    </p>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <a id="submit" class="waves-effect waves-light btn">Search</a>                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="progress" style="display: none !important">
+                <div class="indeterminate"></div>
+            </div>            
+        </div>
+        <div class="modal-footer">
+            Data provided by Marvel. © 2014 Marvel
+            <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+        </div>
+    </div>
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="~/Assets/prism.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+    <script>
+        var reset = function() {
+            $('#submit').removeClass('disabled');
+            $('.progress').hide();
+            $('#heroes').show();
+            $('#staggered-test').hide();
+            $('#name').val('');
+        };
+
+        var process = function() {
+            $('#error').hide();
+            $('#submit').addClass('disabled');
+            $('.progress').show();
+        };
+
+        $(document).ready(function () {            
+            $('.modal-trigger').leanModal();            
+        });
+
+        $("#playground").click(function () {
+            reset();
+            $('#modal1').openModal();            
+        });
+
+        $("#submit").click(function () {
+            var $name = $('#name').val();
+            var $type = $('input[type=radio]:checked', '#search-heroe').val();
+
+            if ($name.length === 0) {
+                $('#error').show();
+                return;
+            }
+
+            process();
+
+            var postdata = {
+                Name: $name,
+                Type: $type
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("SomeActionMethod", "Home")',
+                contentType: "application/json",
+                dataType: 'json',
+                data: JSON.stringify(postdata),
+                success: function (data) {
+                    $('.progress').hide();
+                    $('#heroes').hide();
+                    
+                    var list = $('<ul id="staggered-test">');
+                    for (var index = 0; index < data.length; index++) {
+                        var href = $('<a href="' + data[index].Url + '">'+ data[index].Name +'</a>');
+                        var li = $('<li style="transform: translateX(0px); opacity: 1;">');
+                        li.append(href);
+
+                        list.append(li);
+                    }
+                    
+                    $('.modal-content').append(list);
+                    Materialize.showStaggeredList('#staggered-test');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
