@@ -8,11 +8,11 @@
 
 <html>
 <head>
-    <link href="~/Assets/prism.css" rel="stylesheet" />
+    <link href="~/Styles/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700' rel='stylesheet' type='text/css'>
-    <link href="~/Assets/main.css" rel="stylesheet" />
+    <link href="~/Styles/main.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 </head>
@@ -135,72 +135,8 @@
     </div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="~/Assets/prism.js"></script>
+    <script src="~/Scripts/prism.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
-    <script>
-        var reset = function() {
-            $('#submit').removeClass('disabled');
-            $('.progress').hide();
-            $('#heroes').show();
-            $('#staggered-test').hide();
-            $('#name').val('');
-        };
-
-        var process = function() {
-            $('#error').hide();
-            $('#submit').addClass('disabled');
-            $('.progress').show();
-        };
-
-        $(document).ready(function () {            
-            $('.modal-trigger').leanModal();            
-        });
-
-        $("#playground").click(function () {
-            reset();
-            $('#modal1').openModal();            
-        });
-
-        $("#submit").click(function () {
-            var $name = $('#name').val();
-            var $type = $('input[type=radio]:checked', '#search-heroe').val();
-
-            if ($name.length === 0) {
-                $('#error').show();
-                return;
-            }
-
-            process();
-
-            var postdata = {
-                Name: $name,
-                Type: $type
-            };
-
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("SomeActionMethod", "Home")',
-                contentType: "application/json",
-                dataType: 'json',
-                data: JSON.stringify(postdata),
-                success: function (data) {
-                    $('.progress').hide();
-                    $('#heroes').hide();
-                    
-                    var list = $('<ul id="staggered-test">');
-                    for (var index = 0; index < data.length; index++) {
-                        var href = $('<a href="' + data[index].Url + '">'+ data[index].Name +'</a>');
-                        var li = $('<li style="transform: translateX(0px); opacity: 1;">');
-                        li.append(href);
-
-                        list.append(li);
-                    }
-                    
-                    $('.modal-content').append(list);
-                    Materialize.showStaggeredList('#staggered-test');
-                }
-            });
-        });
-    </script>
+    <script src="/Scripts/Index.js"></script>
 </body>
 </html>

@@ -3,22 +3,10 @@ using System.Linq;
 using System.Web.Mvc;
 using Marvel.Api;
 using Marvel.Api.Filters;
+using Marvel.Mvc.Models;
 
 namespace Marvel.Mvc.Controllers
 {
-    public class NameViewModel
-    {
-        public string Name { get; set; }
-        public string Type { get; set; }
-    }
-
-    public class ResultViewModel
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Url { get; set; }
-    }
-
     public class HomeController : Controller
     {
         // GET: Home
