@@ -83,17 +83,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\main.css" />
-    <Content Include="Assets\materialize.min.css" />
-    <Content Include="Assets\materialize.min.js" />
-    <Content Include="Assets\prism.css" />
-    <Content Include="Assets\prism.js" />
+    <Content Include="Scripts\Index.js" />
+    <Content Include="Styles\main.css" />
+    <Content Include="Styles\materialize.min.css" />
+    <Content Include="Scripts\materialize.min.js" />
+    <Content Include="Styles\prism.css" />
+    <Content Include="Scripts\prism.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\NameViewModel.cs" />
+    <Compile Include="Models\ResultViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -114,7 +117,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Marvel.Api\Marvel.Api.csproj">
