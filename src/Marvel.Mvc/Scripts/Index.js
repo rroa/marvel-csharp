@@ -1,4 +1,4 @@
-﻿$(function() {
+﻿(function($) {
     'use strict';
     var reset = function () {
         $('#submit').removeClass('disabled');
@@ -77,7 +77,7 @@
         }
     });
     $("#submit").click(apiRequest);
-});
+})(jQuery);
 
 
 
