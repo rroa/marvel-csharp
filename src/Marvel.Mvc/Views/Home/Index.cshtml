@@ -94,7 +94,7 @@
         </div>
     </footer>
     <!-- Modal Structure -->
-    <div id="modal1" class="modal modal-fixed-footer">
+    <div id="playgroundModal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <h4>Marvel Search</h4>
             <p>
@@ -106,7 +106,7 @@
                         <div class="input-field col s12">
                             <input id="name" type="text" class="validate">
                             <label for="name">Name</label>
-                            <span id="error" style="display:none; color: red">You must provide a name.</span>
+                            <span id="error" style="display:none; color: red"></span>
                         </div>
                     </div>
                     <p>
@@ -119,18 +119,19 @@
                     </p>
                     <div class="row">
                         <div class="input-field col s12">
-                            <a id="submit" class="waves-effect waves-light btn">Search</a>                            
+                            <a id="submit" class="waves-effect waves-light btn">Search</a>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="progress" style="display: none !important">
                 <div class="indeterminate"></div>
-            </div>            
+            </div>
         </div>
         <div class="modal-footer">
             Data provided by Marvel. © 2014 Marvel
-            <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+            <a href="#" class="btn modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+            <a id="backButton" class="btn waves-effect waves-light btn-flat">Back!</a>
         </div>
     </div>
 
@@ -138,5 +139,6 @@
     <script src="~/Scripts/prism.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
     <script src="/Scripts/Index.js"></script>
+
 </body>
 </html>
