@@ -22,7 +22,7 @@ namespace Marvel.Mvc.Controllers
             const string privateKey = "YOUR API PRIVATE KEY";
 
             var client = new MarvelRestClient(apiKey, privateKey);
-            List<ResultViewModel> results;
+            List<ResultViewModel> results = null;
 
             if (postdata.Type.ToLower() == "character")
             {
@@ -32,9 +32,12 @@ namespace Marvel.Mvc.Controllers
 
                 var response = client.GetCharacters(filter);
 
-                results =
+                if (response.Code == "200")
+                {
+                    results =
                     response.Data.Results.Select(res =>
                         new ResultViewModel { Id = res.Id, Name = res.Name, Url = res.Urls.FirstOrDefault(t => t.Type == "detail").URL }).ToList();
+                }
             }
             else
             {
@@ -44,11 +47,13 @@ namespace Marvel.Mvc.Controllers
 
                 var response = client.GetComics(filter);
 
-                results =
+                if (response.Code == "200")
+                {
+                    results =
                     response.Data.Results.Select(res =>
                         new ResultViewModel { Id = res.Id, Name = res.Title, Url = res.Urls.FirstOrDefault(t => t.Type == "detail").URL }).ToList();
+                }
             }
-
             return Json(results);
         }
     }
