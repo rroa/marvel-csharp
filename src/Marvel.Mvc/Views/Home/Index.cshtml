@@ -44,7 +44,7 @@
             <div class="col s12">
                 <h5>NuGet</h5>
                 <p>
-                    Use <a href="https://www.nuget.org/" target="_blank">NuGet</a> to fetch and install the library for you.
+                    Use <a href="https://www.nuget.org/packages/Marvel.Api/" target="_blank">NuGet</a> to fetch and install the library for you.
                 </p>
                 <pre>
                 <code class="language-csharp">                        
@@ -63,9 +63,11 @@
     // Initialize the API client
     // 
     var client = new MarvelRestClient(publicKey, privateKey);
+
     // First 20 characters 
     // 
     var response = client.FindCharacters(); 
+
     // Iterate through the results
     // 
     foreach (var character in response.Data.Results)
@@ -80,7 +82,7 @@
             <div class="col s12">
                 <h4>Documentation</h4>
                 <div class="divider"></div>
-                <p>The full doxygen documentation for the API can be found <a href="http://marvel.mrroa.com/static/docs/class_marvel_1_1_api_1_1_marvel_rest_client.html" target="_blank">here</a></p>
+                <p>The full doxygen documentation for the API can be found <a href="http://marvel.mrroa.com/static/docs/class_marvel_1_1_api_1_1_marvel_rest_client.html" target="_blank">here</a>.</p>
             </div>
         </div>
     </div>
